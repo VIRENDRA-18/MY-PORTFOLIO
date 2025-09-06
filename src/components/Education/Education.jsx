@@ -49,9 +49,10 @@ const Education = () => {
   }, []);
 
   return (
-    <section 
-    id = "education"
-    className="relative py-24 bg-gradient-to-b from-white via-gray-50 to-white text-gray-900 overflow-hidden">
+    <section
+      id="education"
+      className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-gray-50 to-white text-gray-900 overflow-hidden"
+    >
       {/* Floating Emojis Background */}
       {floatingEmojis.map((item, index) => (
         <motion.span
@@ -77,29 +78,29 @@ const Education = () => {
 
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-1/4 w-72 h-72 bg-purple-200/30 blur-[120px] rounded-full" />
-        <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-blue-200/30 blur-[120px] rounded-full" />
+        <div className="absolute top-20 left-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-purple-200/30 blur-[120px] rounded-full" />
+        <div className="absolute bottom-20 right-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-blue-200/30 blur-[120px] rounded-full" />
       </div>
 
       {/* Section Title */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        className="text-center mb-12 sm:mb-16"
       >
-        <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
           Education
         </h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-3 text-base sm:text-lg text-gray-600">
           My Academic Journey and Learning Milestones
         </p>
       </motion.div>
 
       {/* Timeline */}
       <div className="relative max-w-5xl mx-auto">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-300 via-pink-300 to-blue-300 rounded-full" />
-        <div className="space-y-20">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-300 via-pink-300 to-blue-300 rounded-full hidden sm:block" />
+        <div className="space-y-16 sm:space-y-20">
           {education.map((edu, index) => (
             <motion.div
               key={index}
@@ -107,33 +108,31 @@ const Education = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className={`relative flex items-center ${
-                index % 2 === 0 ? "justify-start" : "justify-end"
+              className={`relative flex flex-col sm:flex-row items-center ${
+                index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
               }`}
             >
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-300 to-blue-300 rounded-full shadow-md shadow-purple-400/40 ring-4 ring-white" />
+              {/* Timeline Dot */}
+              <div className="absolute sm:left-1/2 transform sm:-translate-x-1/2 top-0 w-5 h-5 bg-gradient-to-r from-purple-300 to-blue-300 rounded-full shadow-md shadow-purple-400/40 ring-4 ring-white" />
+              
+              {/* Card */}
               <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  rotate: 0.5,
-                }}
-                className={`relative w-[45%] p-8 rounded-2xl shadow-lg transition-all duration-500 bg-gradient-to-r ${edu.colors} border border-white/70 backdrop-blur-md`}
+                whileHover={{ scale: 1.03, rotate: 0.5 }}
+                className={`relative w-full sm:w-[45%] mt-6 sm:mt-0 p-6 sm:p-8 rounded-2xl shadow-lg transition-all duration-500 bg-gradient-to-r ${edu.colors} border border-white/70 backdrop-blur-md`}
               >
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-4">
-                    {edu.icon}
-                    <h3 className="text-2xl font-bold text-gray-800">
-                      {edu.degree}
-                    </h3>
-                  </div>
-                  <p className="text-lg font-medium text-gray-700">
-                    {edu.school}
-                  </p>
-                  <p className="mt-2 text-sm text-gray-500">{edu.year}</p>
-                  <p className="mt-4 text-gray-700 leading-relaxed">
-                    {edu.description}
-                  </p>
+                <div className="flex items-center gap-3 mb-3">
+                  {edu.icon}
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
+                    {edu.degree}
+                  </h3>
                 </div>
+                <p className="text-sm sm:text-base font-medium text-gray-700">
+                  {edu.school}
+                </p>
+                <p className="mt-1 text-xs sm:text-sm text-gray-500">{edu.year}</p>
+                <p className="mt-3 text-gray-700 leading-relaxed text-sm sm:text-base">
+                  {edu.description}
+                </p>
               </motion.div>
             </motion.div>
           ))}

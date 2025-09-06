@@ -34,7 +34,7 @@ const projects = [
     title: "Portfolio Website",
     description: "My personal portfolio website showcasing projects, skills & interactive 3D animations.",
     tech: ["React.js", "Three.js", "Tailwind", "Framer Motion"],
-    link: "https://3d-portfolio.com",
+    link: "https://my-portfolio-v2l7-qarvtqgwh-virendra-singhs-projects-32e149d5.vercel.app",
     icon: <Globe className="w-6 h-6 text-pink-500" />,
     special: true,
     emojis: ["💻", "🎨", "🚀", "✨", "🌐"],
