@@ -13,15 +13,15 @@ const projects = [
   {
     title: "AgroFuture-Agriculture-Website",
     description: "Interactive 3D portfolio with animations & glassmorphism.",
-    tech: ["Three.js", "React", "Vite"],
+    tech: ["Three.js", "React.js", "Tailwind", "Framer Motion"],
     link: "https://agro-future-agriculture-website-he7p-pcvytzsp5.vercel.app",
     icon: <Sparkles className="w-6 h-6 text-pink-500" />,
   },
   {
-    title: "ERP Dashboard",
+    title: "TODO-LIST-APP",
     description: "Custom ERP dashboard with charts & authentication.",
-    tech: ["Next.js", "Tailwind", "MongoDB"],
-    link: "#",
+    tech: ["Javascript", "React.js", "Tailwind", ],
+    link: "https://to-do-list-qcxxsstxj-virendra-singhs-projects-32e149d5.vercel.app",
     icon: <Code className="w-6 h-6 text-blue-500" />,
   },
 ];
