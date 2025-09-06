@@ -10,14 +10,25 @@ const projects = [
     link: "https://yoga-website-jzzk8wblw-virendra-singhs-projects-32e149d5.vercel.app",
     icon: <Globe className="w-6 h-6 text-white" />,
     special: true,
-    emojis: ["🧘‍♀️", "🌿", "🌸", "☀️", "🌊"], // Floating emojis
+    emojis: ["🧘‍♀️", "🌿", "🌸", "☀️", "🌊"],
+    gradient:
+      "bg-[conic-gradient(at_top_left,_#A8E6CF,_#D0F0FD,_#FFDAB9,_#E6E6FA,_#FFF5E1,_#FFEBEF)]",
   },
   {
     title: "AgroFuture-Agriculture-Website",
-    description: "Interactive 3D portfolio with animations & glassmorphism.",
+    description: "Interactive agriculture website with 3D animations & green tech.",
     tech: ["Three.js", "React.js", "Tailwind", "Framer Motion"],
     link: "https://agro-future-agriculture-website-he7p-pcvytzsp5.vercel.app",
-    icon: <Sparkles className="w-6 h-6 text-pink-500" />,
+    icon: <Sparkles className="w-6 h-6 text-green-600" />,
+    special: true,
+    emojis: ["🌱", "🌾", "🌻", "🚜", "🍎"], // Agriculture emojis
+    gradient:
+      "bg-[conic-gradient(at_top_left,_#E6F7E6,_#DFFFD6,_#F0FFF0,_#FFFEE6,_#F9FFF5,_#E0F7FA)]",
+    emojiAnimation: {
+      duration: 6,   // slower float
+      yRange: 10,    // subtle vertical movement
+      rotateRange: 15 // slight rotation
+    }
   },
   {
     title: "TODO-LIST-APP",
@@ -68,11 +79,11 @@ export default function Projects() {
             <div
               className={`relative overflow-hidden rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 ${
                 project.special
-                  ? "bg-[conic-gradient(at_top_left,_#A8E6CF,_#D0F0FD,_#FFDAB9,_#E6E6FA,_#FFF5E1,_#FFEBEF)] text-gray-800"
+                  ? `${project.gradient} text-gray-800`
                   : "bg-white/80 backdrop-blur-md"
               }`}
             >
-              {/* Floating Emojis for Yoga Card */}
+              {/* Floating Emojis */}
               {project.special &&
                 project.emojis &&
                 project.emojis.map((emoji, i) => (
@@ -83,9 +94,23 @@ export default function Projects() {
                       top: `${20 + i * 15}%`,
                       left: `${15 + i * 12}%`,
                     }}
-                    animate={{ y: [0, -15, 0] }}
+                    animate={
+                      project.emojiAnimation
+                        ? {
+                            y: [0, -project.emojiAnimation.yRange, 0],
+                            rotate: [
+                              0,
+                              project.emojiAnimation.rotateRange,
+                              -project.emojiAnimation.rotateRange,
+                              0,
+                            ],
+                          }
+                        : { y: [0, -15, 0] }
+                    }
                     transition={{
-                      duration: 3 + i,
+                      duration: project.emojiAnimation
+                        ? project.emojiAnimation.duration + i
+                        : 3 + i,
                       repeat: Infinity,
                       ease: "easeInOut",
                       delay: i * 0.5,
