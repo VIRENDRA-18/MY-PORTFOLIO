@@ -1,121 +1,95 @@
-// src/components/Projects.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Code, Globe, Sparkles } from "lucide-react";
 
 const projects = [
   {
-    title: "One-Jeet-Yoga-Website",
-    description:
-      "A modern, minimal, and fully responsive personal portfolio built with React.js, Tailwind CSS, and Framer Motion.",
+    title: "Yoga Website",
+    description: "A modern yoga landing page with React + Tailwind.",
     tech: ["React", "Tailwind", "Framer Motion"],
-    live: "https://yoga-website-beta-bice.vercel.app",
-    github: "https://github.com/VIRENDRA-18/Yoga-Website.git",
-    icon: "🧘",
+    link: "#",
+    icon: <Globe className="w-6 h-6 text-purple-500" />,
   },
   {
-    title: "AgroFuture-Agriculture-Website",
-    description:
-      "Developed a feature-rich e-commerce platform with product listings, cart, and checkout functionality.",
-    tech: ["React", "Redux", "Node.js"],
-    live: "https://agro-future-agriculture-website-he7p-pcvytzsp5.vercel.app",
-    github: "https://github.com/VIRENDRA-18/AgroFuture-Agriculture-Website.git",
-    icon: "🌱",
+    title: "Portfolio 3D",
+    description: "Interactive 3D portfolio with animations & glassmorphism.",
+    tech: ["Three.js", "React", "Vite"],
+    link: "#",
+    icon: <Sparkles className="w-6 h-6 text-pink-500" />,
   },
   {
-    title: "3D Portfolio Experience",
-    description:
-      "Interactive 3D portfolio section using Three.js, showcasing innovative animations and immersive UI.",
-    tech: ["React", "Three.js", "GSAP"],
-    live: "https://3d-portfolio.com",
-    github: "https://github.com/username/3d-portfolio",
-    icon: "🎨",
+    title: "ERP Dashboard",
+    description: "Custom ERP dashboard with charts & authentication.",
+    tech: ["Next.js", "Tailwind", "MongoDB"],
+    link: "#",
+    icon: <Code className="w-6 h-6 text-blue-500" />,
   },
 ];
 
-const Projects = () => {
+export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-20 px-6 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-hidden"
+      className="relative py-24 px-6 bg-gradient-to-b from-gray-50 via-white to-gray-100"
     >
-      {/* Glowing Background Shapes */}
+      {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-400/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-400/20 blur-[120px] rounded-full" />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-400/30 blur-[150px] rounded-full" />
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-400/30 blur-[150px] rounded-full" />
       </div>
 
-      {/* Section Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 inline-block">
-          Projects
-          <span className="absolute left-1/2 -bottom-3 w-16 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transform -translate-x-1/2 animate-pulse" />
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600">
+          My Projects 🚀
         </h2>
-        <p className="text-gray-600 mt-5 text-lg">
-          A showcase of some of my best works and experiments
+        <p className="text-gray-600 mt-3 text-lg max-w-xl mx-auto">
+          Showcasing my best works, experiments, and creative solutions.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Project Cards */}
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-        {projects.map((project, i) => (
+      {/* Project Timeline Style */}
+      <div className="relative border-l-4 border-purple-400 pl-8 space-y-14 max-w-3xl mx-auto">
+        {projects.map((project, index) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -8, scale: 1.02 }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
+            key={index}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="group relative rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-lg p-6 shadow-md hover:shadow-2xl hover:border-purple-400/60 transition-all duration-500"
+            className="relative"
           >
-            {/* Project Icon / Badge */}
-            <div className="flex items-center justify-center w-14 h-14 mb-4 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 text-white text-2xl shadow-lg">
-              {project.icon}
-            </div>
+            {/* Timeline Dot */}
+            <div className="absolute -left-[38px] top-2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg border-4 border-white" />
 
-            {/* Content */}
-            <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
-              {project.title}
-            </h3>
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-              {project.description}
-            </p>
+            {/* Project Card */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="flex items-center gap-3 mb-3">
+                {project.icon}
+                <h3 className="text-2xl font-bold text-gray-800">
+                  {project.title}
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-4">{project.description}</p>
 
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tech.map((t, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+              {/* Tech Badges */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-sm rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-            {/* Buttons */}
-            <div className="flex gap-6">
+              {/* Project Link */}
               <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium relative after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-purple-500 hover:after:w-full after:transition-all"
+                href={project.link}
+                className="inline-block text-purple-600 font-semibold hover:text-pink-500 transition-colors"
               >
-                <ExternalLink size={16} /> Live
-              </a>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium relative after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-gray-700 hover:after:w-full after:transition-all"
-              >
-                <Github size={16} /> Code
+                🔗 View Project
               </a>
             </div>
           </motion.div>
@@ -123,6 +97,4 @@ const Projects = () => {
       </div>
     </section>
   );
-};
-
-export default Projects;
+}
