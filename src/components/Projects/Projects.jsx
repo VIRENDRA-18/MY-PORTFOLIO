@@ -7,14 +7,14 @@ const projects = [
     title: "Yoga Website",
     description: "A modern yoga landing page with React + Tailwind.",
     tech: ["React", "Tailwind", "Framer Motion"],
-    link: "#",
+    link: "https://yoga-website-jzzk8wblw-virendra-singhs-projects-32e149d5.vercel.app",
     icon: <Globe className="w-6 h-6 text-purple-500" />,
   },
   {
-    title: "Portfolio 3D",
+    title: "AgroFuture-Agriculture-Website",
     description: "Interactive 3D portfolio with animations & glassmorphism.",
     tech: ["Three.js", "React", "Vite"],
-    link: "#",
+    link: "https://agro-future-agriculture-website-he7p-pcvytzsp5.vercel.app",
     icon: <Sparkles className="w-6 h-6 text-pink-500" />,
   },
   {
